@@ -1,0 +1,18 @@
+{
+  "name": "dbf-workspacemanager",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kalana@duosoftware.com",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "config": "^3.0.1",
+    "dbf-dbmodels": "^1.0.154",
+    "dvp-common-lite": "^1.0.1",
+    "ioredis": "^4.6.2"
+  }
+}
