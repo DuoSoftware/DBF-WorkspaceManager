@@ -38,12 +38,15 @@ module.exports = () =>{
                         let Projects = User.Result.projects;
 
                         let workspacesExist =  WorkSpaces.filter((WorkSpace)=>{
-                            return (WorkSpace.workspaceId === workspace);
+                            return (WorkSpace.workspaceId.toString() === workspace.toString());
                         });
 
                         let projectExist = Projects.filter((Project)=>{
-                            return (Project.projectId === project);
+                            return (Project.projectId.toString() === project.toString());
                         });
+
+
+
 
                         if(workspacesExist.length !== 0 && projectExist.length !== 0){
 
@@ -57,12 +60,13 @@ module.exports = () =>{
                         }
                         else{
                             redis.SetSession(key, false).then(function (value) {
-                                next()
+
                             }).catch(function (ex) {
                                 console.log(ex);
-                                next(new Error('Error'));
+                                //next(new Error('Error'));
                             });
                             next(new Error('User Unauthorized'));
+
                         }
 
                     }
