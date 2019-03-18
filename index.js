@@ -1,6 +1,6 @@
 
 const Redis  = require('./lib/redisManager');
-const GetUserByEmail = require('./lib/UserManager').GetUserByEmailInternal;
+const GetUserByUserName = require('./lib/UserManager').GetUserByUsernameInternal;
 
 
 let redis = new Redis();
@@ -11,7 +11,7 @@ module.exports = () =>{
     return function(req, res, next) {
 
 
-        let email = req.user.iss;
+        let email = req.user.sub;
         let project = parseInt(req.user.company);
         let workspace = parseInt(req.user.tenant);
 
@@ -29,7 +29,7 @@ module.exports = () =>{
                 }
             }
             else {
-                GetUserByEmail(req, (user)=>{
+                GetUserByUserName(req, (user)=>{
 
                     let User = JSON.parse(user);
                     if((User.IsSuccess === true || User.IsSuccess === 'true') && User.Result !== null){
