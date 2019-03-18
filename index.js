@@ -15,7 +15,7 @@ module.exports = () =>{
         let project = parseInt(req.user.company);
         let workspace = parseInt(req.user.tenant);
 
-        let key = `${email}:${project}:${workspace}`;
+        let key = `srn:${email}:${project}:${workspace}`;
 
         redis.GetSession(key).then(function (value) {
 
